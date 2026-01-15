@@ -32,6 +32,10 @@
             padding: 20px;
         }
 
+        .login-container.hidden {
+            display: none !important;
+        }
+
         .login-box {
             background: white;
             border-radius: 20px;
@@ -106,16 +110,16 @@
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
         }
 
         .login-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
 
         .login-btn:active {
@@ -123,12 +127,9 @@
         }
 
         .help-text {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
-            font-size: 13px;
-            color: #888;
-            line-height: 1.6;
+            font-size: 12px;
+            color: #999;
+            line-height: 1.8;
         }
 
         /* 学習ページ */
@@ -136,13 +137,17 @@
             display: none;
         }
 
+        .learning-container.visible {
+            display: block !important;
+        }
+
         .header {
             background: white;
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
+            text-align: center;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
         }
 
         .header h1 {
@@ -151,42 +156,45 @@
             font-size: 32px;
         }
 
-        .header .welcome {
+        .welcome {
             color: #666;
             font-size: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .progress-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            background: #f8f9fa;
             border-radius: 15px;
+            padding: 25px;
             margin-top: 20px;
         }
 
         .progress-bar-container {
-            background: rgba(255,255,255,0.3);
-            border-radius: 10px;
-            height: 30px;
+            background: #e0e0e0;
+            border-radius: 50px;
+            height: 40px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            position: relative;
         }
 
         .progress-bar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             height: 100%;
-            background: white;
+            width: 0%;
+            border-radius: 50px;
             transition: width 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
             font-weight: bold;
-            color: #667eea;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .progress-text {
-            color: white;
-            text-align: center;
+            color: #555;
+            font-weight: 500;
             font-size: 14px;
         }
 
@@ -212,6 +220,10 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
+        .lesson-card.completed {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+        }
+
         .lesson-card.disabled {
             opacity: 0.6;
             cursor: not-allowed;
@@ -220,22 +232,19 @@
 
         .lesson-card.disabled:hover {
             transform: none;
-        }
-
-        .lesson-card.completed {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .lesson-header {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
             margin-bottom: 15px;
         }
 
         .lesson-checkbox {
             width: 24px;
             height: 24px;
+            margin-right: 12px;
             cursor: pointer;
             flex-shrink: 0;
             margin-top: 2px;
@@ -243,14 +252,21 @@
 
         .lesson-title {
             flex: 1;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             color: #333;
             line-height: 1.4;
         }
 
-        .lesson-card.disabled .lesson-title {
-            color: #999;
+        .video-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            margin-top: 10px;
         }
 
         .coming-soon-badge {
@@ -260,19 +276,53 @@
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: bold;
-            margin-left: 10px;
+            font-weight: 600;
+            margin-left: 8px;
         }
 
-        .video-icon {
-            color: #667eea;
+        .footer-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+
+        .last-update {
+            text-align: center;
+            color: white;
             font-size: 14px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .lesson-card.disabled .video-icon {
-            color: #999;
+            opacity: 0.8;
         }
 
         /* モーダル */
@@ -285,8 +335,8 @@
             height: 100%;
             background: rgba(0,0,0,0.8);
             z-index: 1000;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             padding: 20px;
         }
 
@@ -296,12 +346,12 @@
 
         .modal-content {
             background: white;
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 30px;
             max-width: 900px;
             width: 100%;
             max-height: 90vh;
-            overflow: auto;
+            overflow-y: auto;
             position: relative;
         }
 
@@ -309,32 +359,39 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            font-size: 30px;
-            cursor: pointer;
-            color: #999;
-            background: none;
+            background: #e74c3c;
+            color: white;
             border: none;
             width: 40px;
             height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
             transition: all 0.3s;
+            z-index: 10;
         }
 
         .modal-close:hover {
-            background: #f0f0f0;
-            color: #333;
+            background: #c0392b;
+            transform: rotate(90deg);
+        }
+
+        .modal-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-right: 50px;
         }
 
         .video-container {
+            width: 100%;
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 10px;
-            margin-top: 10px;
         }
 
         .video-container iframe {
@@ -346,80 +403,28 @@
             border: none;
         }
 
-        .footer-actions {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .footer-btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .logout-btn {
-            background: #dc3545;
-            color: white;
-        }
-
-        .logout-btn:hover {
-            background: #c82333;
-            transform: translateY(-2px);
-        }
-
-        .reset-btn {
-            background: #ffc107;
-            color: #333;
-        }
-
-        .reset-btn:hover {
-            background: #e0a800;
-            transform: translateY(-2px);
-        }
-
-        .last-update {
-            text-align: center;
-            color: #999;
-            font-size: 12px;
-            margin-top: 20px;
-        }
-
         /* レスポンシブ */
         @media (max-width: 768px) {
-            .login-box {
-                padding: 30px 20px;
+            .lessons-grid {
+                grid-template-columns: 1fr;
             }
 
             .header h1 {
                 font-size: 24px;
             }
 
-            .lessons-grid {
-                grid-template-columns: 1fr;
+            .login-box h1 {
+                font-size: 24px;
             }
 
-            .footer-actions {
-                flex-direction: column;
-            }
-
-            .footer-btn {
-                width: 100%;
+            .modal-content {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ログイン画面 -->
+    <!-- ログインページ -->
     <div class="login-container" id="loginContainer">
         <div class="login-box">
             <h1>🎓 サヤ取り講座</h1>
@@ -439,7 +444,7 @@
                 <div class="error-message" id="errorMessage">アクセスコードが正しくありません</div>
             </div>
 
-            <button class="login-btn" onclick="login()">学習開始</button>
+            <button class="login-btn" id="loginBtn">学習開始</button>
 
             <div class="help-text">
                 💡 アクセスコードを忘れた場合は、<br>
@@ -454,7 +459,7 @@
         <div class="container">
             <div class="header">
                 <h1>🎓 サヤ取り講座</h1>
-                <p class="welcome">楽しくサヤ取りを学びましょう！</p>
+                <p class="welcome">一緒に学んでいきましょう！</p>
                 
                 <div class="progress-section">
                     <div class="progress-bar-container">
@@ -469,8 +474,8 @@
             </div>
 
             <div class="footer-actions">
-                <button class="footer-btn logout-btn" onclick="logout()">ログアウト</button>
-                <button class="footer-btn reset-btn" onclick="resetProgress()">進捗をリセット</button>
+                <button class="footer-btn logout-btn" id="logoutBtn">ログアウト</button>
+                <button class="footer-btn reset-btn" id="resetBtn">進捗をリセット</button>
             </div>
 
             <p class="last-update" id="lastUpdate"></p>
@@ -480,7 +485,7 @@
     <!-- 動画モーダル -->
     <div class="modal" id="videoModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeVideo()">&times;</button>
+            <button class="modal-close" id="closeVideoBtn">&times;</button>
             <h2 id="modalTitle"></h2>
             <div class="video-container" id="videoContainer"></div>
         </div>
@@ -516,11 +521,21 @@
             { id: 'lesson11', title: 'レッスン11：金属のサヤ取り', videoId: '1nY3GwkQ37uYs-u357XnyvFlhATIMT8zh' }
         ];
 
+        // DOM要素を取得
+        const loginContainer = document.getElementById('loginContainer');
+        const learningContainer = document.getElementById('learningContainer');
+        const accessCodeInput = document.getElementById('accessCode');
+        const loginBtn = document.getElementById('loginBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const videoModal = document.getElementById('videoModal');
+        const closeVideoBtn = document.getElementById('closeVideoBtn');
+
         // ログイン処理
         function login() {
-            const accessCode = document.getElementById('accessCode').value.trim();
-            const errorMessage = document.getElementById('errorMessage');
-
+            const accessCode = accessCodeInput.value.trim();
+            
             if (VALID_ACCESS_CODES.includes(accessCode)) {
                 // ログイン成功
                 localStorage.setItem('isAuthenticated', 'true');
@@ -529,32 +544,15 @@
             } else {
                 // ログイン失敗
                 errorMessage.style.display = 'block';
-                document.getElementById('accessCode').value = '';
-                document.getElementById('accessCode').focus();
+                accessCodeInput.value = '';
+                accessCodeInput.focus();
             }
         }
 
-        // Enterキーでログイン
-        document.addEventListener('DOMContentLoaded', function() {
-            const accessCodeInput = document.getElementById('accessCode');
-            if (accessCodeInput) {
-                accessCodeInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        login();
-                    }
-                });
-
-                // 数字のみ入力可能にする
-                accessCodeInput.addEventListener('input', function(e) {
-                    this.value = this.value.replace(/[^0-9]/g, '');
-                });
-            }
-        });
-
         // 学習ページを表示
         function showLearningPage() {
-            document.getElementById('loginContainer').style.display = 'none';
-            document.getElementById('learningContainer').style.display = 'block';
+            loginContainer.classList.add('hidden');
+            learningContainer.classList.add('visible');
             renderLessons();
             updateProgress();
         }
@@ -573,7 +571,7 @@
             const grid = document.getElementById('lessonsGrid');
             grid.innerHTML = '';
 
-            lessons.forEach((lesson, index) => {
+            lessons.forEach((lesson) => {
                 const card = document.createElement('div');
                 const isCompleted = localStorage.getItem(lesson.id) === 'true';
                 const isDisabled = !lesson.videoId;
@@ -587,7 +585,6 @@
                             class="lesson-checkbox" 
                             id="${lesson.id}" 
                             ${isCompleted ? 'checked' : ''}
-                            onchange="toggleLesson('${lesson.id}')"
                         >
                         <div class="lesson-title">
                             ${lesson.title}
@@ -597,6 +594,14 @@
                     ${!isDisabled ? '<div class="video-icon">🎬 動画を見る</div>' : ''}
                 `;
 
+                // チェックボックスのイベント
+                const checkbox = card.querySelector('.lesson-checkbox');
+                checkbox.addEventListener('change', function(e) {
+                    e.stopPropagation();
+                    toggleLesson(lesson.id);
+                });
+
+                // カードクリックで動画再生
                 if (!isDisabled) {
                     card.addEventListener('click', function(e) {
                         if (e.target.type !== 'checkbox') {
@@ -611,7 +616,8 @@
 
         // レッスンチェック切り替え
         function toggleLesson(lessonId) {
-            const isChecked = document.getElementById(lessonId).checked;
+            const checkbox = document.getElementById(lessonId);
+            const isChecked = checkbox.checked;
             localStorage.setItem(lessonId, isChecked);
             localStorage.setItem('lastUpdate', new Date().toLocaleString('ja-JP'));
             
@@ -644,51 +650,39 @@
             // 全レッスン完了時
             if (completedLessons === totalLessons) {
                 setTimeout(() => {
-                    alert('🎉 おめでとうございます！\n\nすべてのレッスンを完了しました！');
+                    alert('🎉 おめでとうございます！\n\n学習が完了しました！');
                 }, 500);
             }
         }
 
         // 動画を開く
         function openVideo(lessonId, title, videoId) {
-            const modal = document.getElementById('videoModal');
             const modalTitle = document.getElementById('modalTitle');
             const videoContainer = document.getElementById('videoContainer');
 
             modalTitle.textContent = title;
             
-            // すべてのデバイスでiframe埋め込み表示
             videoContainer.innerHTML = `
                 <iframe 
                     src="https://drive.google.com/file/d/${videoId}/preview" 
                     allow="autoplay; fullscreen"
                     allowfullscreen
-                    style="border: none;"
                 ></iframe>
             `;
 
-            modal.classList.add('active');
+            videoModal.classList.add('active');
         }
 
         // 動画を閉じる
         function closeVideo() {
-            const modal = document.getElementById('videoModal');
             const videoContainer = document.getElementById('videoContainer');
-            
-            modal.classList.remove('active');
+            videoModal.classList.remove('active');
             videoContainer.innerHTML = '';
         }
 
-        // モーダル外クリックで閉じる
-        document.getElementById('videoModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeVideo();
-            }
-        });
-
         // 進捗をリセット
         function resetProgress() {
-            if (confirm('本当に進捗をリセットしますか？\n\nすべてのチェックが外れます。')) {
+            if (confirm('進捗をリセットしますか？\n\n※ すべてのチェックが解除されます。')) {
                 lessons.forEach(lesson => {
                     localStorage.removeItem(lesson.id);
                 });
@@ -697,6 +691,23 @@
                 updateProgress();
             }
         }
+
+        // イベントリスナー設定
+        loginBtn.addEventListener('click', login);
+        
+        accessCodeInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+
+        accessCodeInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        logoutBtn.addEventListener('click', logout);
+        resetBtn.addEventListener('click', resetProgress);
+        closeVideoBtn.addEventListener('click', closeVideo);
 
         // 初期化
         window.addEventListener('DOMContentLoaded', function() {
